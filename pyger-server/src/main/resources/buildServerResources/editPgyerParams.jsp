@@ -5,6 +5,7 @@
 <%@ taglib prefix="forms" tagdir="/WEB-INF/tags/forms" %>
 <%@ taglib prefix="bs" tagdir="/WEB-INF/tags" %>
 <jsp:useBean id="runnerConst" scope="request" class="org.ligboy.teamcity.pgyer.PgyerConstants"/>
+<jsp:useBean id="buildForm" type="jetbrains.buildServer.controllers.admin.projects.BuildTypeForm" scope="request"/>
 
 <l:settingsGroup title="Target Settings">
     <tr>
@@ -30,9 +31,12 @@
     <tr>
         <th><label for="org.ligboy.teamcity.pgyer.sourcePath">File path:  <l:star/></label></th>
         <td>
-            <props:textProperty name="<%=PgyerConstants.PARAM_SOURCE_PATH%>" className="longField"
+            <props:textProperty id="artifactPaths" name="<%=PgyerConstants.PARAM_SOURCE_PATH%>" className="longField"
                                 maxlength="256" />
-            <bs:vcsTree fieldId="<%=PgyerConstants.PARAM_SOURCE_PATH%>"/>
+            <%--<bs:vcsTree fieldId="<%=PgyerConstants.PARAM_SOURCE_PATH%>"/>--%>
+            <img class="handle vcsTreeHandle" src="<c:url value="/img/tree/popup-artifacts-tree.png"/>"
+                 title="Select files from the latest build"
+                 showdiscardchangesmessage="false" onclick="return BS.PgyerEditArtifacts.showPopup(this, '${buildForm.externalId}');"/>
             <span class="smallNote">Path to app package file to upload. Ant-style wildcards like app/**/*.apk.
             <bs:help file="Configuring+General+Settings" anchor="artifactPaths"/></span>
 
@@ -72,3 +76,33 @@
         </td>
     </tr>
 </l:settingsGroup>
+<script language="JavaScript">
+    BS.PgyerEditArtifacts = {
+        popup: null,
+
+        showPopup: function(elem, buildTypeId) {
+            this.popup = new BS.Popup("editArtifactsTreePopup", {
+                hideOnMouseOut: false,
+                hideOnMouseClickOutside: true,
+                shift: {x: 20, y: 0},
+                url: window["base_uri"] + "/editArtifactsTreePopup.html?buildTypeId=" + buildTypeId
+            });
+            this.popup.showPopupNearElement(elem);
+
+            this.prepareSelection();
+
+            return false;
+        },
+
+        prepareSelection: function() {
+            var textarea = $j("#artifactPaths");
+            $j(window).off("bs.agentFile bs.agentDir").on("bs.agentFile bs.agentDir", function(e, path) {
+                var pathToAppend = e.namespace == "agentFile" ? path : path + " => " + path;
+                textarea.val(pathToAppend);
+                BS.VisibilityHandlers.updateVisibility('artifactPaths');
+                BS.EditBuildTypeForm.setModified(true);   // In theory this can be wrong, but in 99% of cases the form is modified.
+                this.popup.hidePopup(500, true);
+            });
+        }
+    };
+</script>
