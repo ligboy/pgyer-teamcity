@@ -78,16 +78,14 @@
 </l:settingsGroup>
 <script language="JavaScript">
     BS.PgyerEditArtifacts = {
-        popup: null,
-
         showPopup: function(elem, buildTypeId) {
-            this.popup = new BS.Popup("editArtifactsTreePopup", {
+            var popup = new BS.Popup("editArtifactsTreePopup", {
                 hideOnMouseOut: false,
                 hideOnMouseClickOutside: true,
                 shift: {x: 20, y: 0},
                 url: window["base_uri"] + "/editArtifactsTreePopup.html?buildTypeId=" + buildTypeId
             });
-            this.popup.showPopupNearElement(elem);
+            popup.showPopupNearElement(elem);
 
             this.prepareSelection();
 
@@ -101,7 +99,6 @@
                 textarea.val(pathToAppend);
                 BS.VisibilityHandlers.updateVisibility('artifactPaths');
                 BS.EditBuildTypeForm.setModified(true);   // In theory this can be wrong, but in 99% of cases the form is modified.
-                this.popup.hidePopup(500, true);
             });
         }
     };
