@@ -1,7 +1,7 @@
 
- TeamCity Sample plugin
+ Pgyer TeamCity plugin
 
- This is sample project with basic TeamCity plugin, that adds "Click me" button to the footer.
+ This is project is Pgyer TeamCity plugin, that uploading package to Pgyer server.
 
  1. Build
  Issue 'mvn package' command from the root project to build the plugin. Resulting package <artifactId>.zip will be placed in 'target' directory. 
