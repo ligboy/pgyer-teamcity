@@ -82,8 +82,8 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
         return null;
     }
 
-    private static final Pattern PATTERN_REMOVE_SUFFIX = Pattern.compile("[\\.\\s。，;/\\\\!！～~]*?$");
-    private static final Pattern PATTERN_REMOVE_PREFIX = Pattern.compile("^[\\.\\s。，;/\\\\!！～~]*?");
+    private static final Pattern PATTERN_REMOVE_SUFFIX = Pattern.compile("[\\.\\s\\u3002\\uFF0C\\uFF1B\\u3000\\uFF5E\\uFF01;/\\\\!~]*?$");
+    private static final Pattern PATTERN_REMOVE_PREFIX = Pattern.compile("^[\\.\\s\\u3002\\uFF0C\\uFF1B\\u3000\\uFF5E\\uFF01;/\\\\!~]*?");
 
     private static final String[] REMOVE_OLD_STRINGS = new String[] {"\n", "\r", "\t"};
     private static final String[] REMOVE_NEW_STRINGS = new String[] {"", "", ""};
