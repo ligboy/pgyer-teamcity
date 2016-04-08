@@ -3,7 +3,7 @@
   <info>
     <name>pyger</name>
     <display-name>Pyger Plugin</display-name>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
     <description>Pgyer Teamcity plugin</description>
     <download-url>https://github.com/ligboy/pyger-teamcity</download-url>
     <email>ligboy@gmail.com</email>
