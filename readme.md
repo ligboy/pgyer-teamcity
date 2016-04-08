@@ -1,6 +1,8 @@
 
  Pgyer TeamCity plugin
 
+ Teamcity Version: 9.0+
+
  This is project is Pgyer TeamCity plugin, that uploading package to Pgyer server.
 
  1. Build

@@ -53,7 +53,7 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
                 if (i > 0) {
                     sb.append('\n');
                 }
-                sb.append(i + 1).append('.').append(change).append(';');
+                sb.append(i + 1).append(". ").append(change).append(';');
             }
         }
         context.addSharedParameter(PARAMETER_CHANGELOG, sb.toString());
@@ -65,12 +65,14 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
         if (vcsModification != null) {
             String description = vcsModification.getDescription();
             if (!StringUtil.isEmptyOrSpaces(description)) {
-                String[] split = description.split("\n", 1);
+                String[] split = description.split("\n", 2);
                 String change = split[0];
                 if (!StringUtil.isEmptyOrSpaces(change)) {
                     change = StringUtil.replace(change, REMOVE_OLD_STRINGS, REMOVE_NEW_STRINGS);
-                    Matcher matcher = PATTERN_REMOVE_SUFFIX.matcher(change);
-                    change = matcher.replaceFirst(change);
+                    Matcher matcher = PATTERN_REMOVE_PREFIX.matcher(change);
+                    change = matcher.replaceFirst("");
+                    matcher = PATTERN_REMOVE_SUFFIX.matcher(change);
+                    change = matcher.replaceFirst("");
                 }
                 return change;
             }
@@ -79,7 +81,8 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
         return null;
     }
 
-    private static final Pattern PATTERN_REMOVE_SUFFIX = Pattern.compile("[\\.\\s。，;/\\\\<>!！～~]*?$");
+    private static final Pattern PATTERN_REMOVE_SUFFIX = Pattern.compile("[\\.\\s。，;/\\\\!！～~]*?$");
+    private static final Pattern PATTERN_REMOVE_PREFIX = Pattern.compile("^[\\.\\s。，;/\\\\!！～~]*?");
 
     private static final String[] REMOVE_OLD_STRINGS = new String[] {"\n", "\r", "\t"};
     private static final String[] REMOVE_NEW_STRINGS = new String[] {"", "", ""};

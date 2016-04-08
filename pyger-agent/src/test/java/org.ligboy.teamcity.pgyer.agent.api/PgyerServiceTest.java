@@ -40,10 +40,10 @@ public class PgyerServiceTest {
         PgyerService pgyerService = mRetrofit.create(PgyerService.class);
         PgyerApi pgyerApi = new PgyerApi();
 
-        Response<UploadResultBody> response =
-                pgyerApi.uploadApp("078e319344f328075a15fb513c1e1a4b", "10656b1dac2e8de4b9775fc0a856db85",
-                        new File("/home/ligboy/Desktop/xjexport-zte-debug.apk"), "", "", false);
-        System.out.println(response.body());
+//        Response<UploadResultBody> response =
+//                pgyerApi.uploadApp("078e319344f328075a15fb513c1e1a4b", "10656b1dac2e8de4b9775fc0a856db85",
+//                        new File("/home/ligboy/Desktop/xjexport-zte-debug.apk"), "", "", false);
+//        System.out.println(response.body());
 //        try {
 //        } catch (Exception e) {
 //            e.printStackTrace();
@@ -53,9 +53,9 @@ public class PgyerServiceTest {
 
     @Test
     public void uploadApp2() throws Exception {
-        UploadResultBody upload = new PgyerApi2().upload("078e319344f328075a15fb513c1e1a4b", "10656b1dac2e8de4b9775fc0a856db85",
-                new File("/home/ligboy/Desktop/xjexport-zte-debug.apk"), "", "", false);
-        System.out.println(upload);
+//        UploadResultBody upload = new PgyerApi2().upload("078e319344f328075a15fb513c1e1a4b", "10656b1dac2e8de4b9775fc0a856db85",
+//                new File("/home/ligboy/Desktop/xjexport-zte-debug.apk"), "", "", false);
+//        System.out.println(upload);
     }
 
 }

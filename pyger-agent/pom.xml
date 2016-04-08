@@ -5,7 +5,7 @@
     <parent>
         <artifactId>pyger</artifactId>
         <groupId>org.ligboy.teamcity</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.1.0</version>
     </parent>
     <artifactId>pyger-agent</artifactId>
     <packaging>jar</packaging>
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>org.ligboy.teamcity</groupId>
             <artifactId>pyger-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.1.0</version>
             <scope>compile</scope>
         </dependency>
 
