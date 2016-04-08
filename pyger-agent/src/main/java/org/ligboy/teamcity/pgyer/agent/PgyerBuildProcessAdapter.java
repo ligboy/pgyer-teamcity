@@ -1,9 +1,12 @@
 package org.ligboy.teamcity.pgyer.agent;
 
 import jetbrains.buildServer.RunBuildException;
+import jetbrains.buildServer.agent.AgentRunningBuild;
 import jetbrains.buildServer.agent.BuildRunnerContext;
 import jetbrains.buildServer.util.FileUtil;
 import jetbrains.buildServer.util.StringUtil;
+import jetbrains.buildServer.vcs.VcsChangeInfo;
+import jetbrains.buildServer.vcs.VcsRootEntry;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import org.jetbrains.annotations.NotNull;
@@ -16,6 +19,7 @@ import org.ligboy.teamcity.pgyer.agent.convert.FastConverterFactory;
 import retrofit2.Retrofit;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * @author ligboy
@@ -47,9 +51,7 @@ public class PgyerBuildProcessAdapter extends SyncBuildProcessAdapter {
     @Override
     protected void runProcess() throws RunBuildException {
         mLogger.message("Api Key: " + mApiKey);
-        mLogger.message("User Key: " + mUserKey);
-        mLogger.message("File: " + mFile.getPath());
-        mLogger.message("Uploading " + mFile + " to Pgyer server...");
+        mLogger.message("Uploading " + mFile.getPath() + " to Pgyer server...");
         try {
             UploadResultBody uploadResultBody = new PgyerApi2().upload(mApiKey, mUserKey,
                 mFile, mPassword, mUpdateInstructs, mIsPublishToPublic);

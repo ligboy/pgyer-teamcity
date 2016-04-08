@@ -3,5 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
        default-autowire="constructor">
+  <!--suppress SpringBeanConstructorArgInspection -->
   <bean id="ligboyPgyerRunType" class="org.ligboy.teamcity.pgyer.server.PgyerRunType"/>
+  <!--suppress SpringBeanConstructorArgInspection -->
+  <bean class="org.ligboy.teamcity.pgyer.server.PgyerBuildStartContextProcessor"/>
 </beans>
