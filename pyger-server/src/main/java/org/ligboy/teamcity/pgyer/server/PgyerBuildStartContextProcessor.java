@@ -68,6 +68,7 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
                 String[] split = description.split("\n", 2);
                 String change = split[0];
                 if (!StringUtil.isEmptyOrSpaces(change)) {
+                    change = change.trim();
                     change = StringUtil.replace(change, REMOVE_OLD_STRINGS, REMOVE_NEW_STRINGS);
                     Matcher matcher = PATTERN_REMOVE_PREFIX.matcher(change);
                     change = matcher.replaceFirst("");
