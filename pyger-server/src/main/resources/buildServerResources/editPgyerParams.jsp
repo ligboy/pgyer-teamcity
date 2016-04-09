@@ -79,7 +79,7 @@
 
 <l:settingsGroup title="Others">
     <tr class="advancedSetting">
-        <span class="smallNote">Thanks to <b>Jingxiong Li</b> (&#00057;&#52;<!---->&#x037;&#0000053;<!---->&#000050;<!---->&#051;&#x0000038;&#0000053;&#00057;<!---->&#0000064;&#00113;&#x0071;&#000046;<!---->&#099;&#0111;&#0000109;)</span>
+        <td><span class="smallNote">Thanks to <b>Jingxiong Li</b> (&#00057;&#52;<!---->&#x037;&#0000053;<!---->&#000050;<!---->&#051;&#x0000038;&#0000053;&#00057;<!---->&#0000064;&#00113;&#x0071;&#000046;<!---->&#099;&#0111;&#0000109;)</span></td>
     </tr>
 </l:settingsGroup>
 <script language="JavaScript">
