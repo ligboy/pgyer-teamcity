@@ -64,16 +64,19 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
     private static String getChange(SVcsModification vcsModification) {
         if (vcsModification != null) {
             String description = vcsModification.getDescription();
+            if (PATTERN_CHANGELOG_EXCLUDED.matcher(description).find()) {
+                return null;
+            }
             if (!StringUtil.isEmptyOrSpaces(description)) {
-                String[] split = description.split("\n", 2);
+                String[] split = description.split(LINE_BREAK, 2);
                 String change = split[0];
                 if (!StringUtil.isEmptyOrSpaces(change)) {
                     change = change.trim();
                     change = StringUtil.replace(change, REMOVE_OLD_STRINGS, REMOVE_NEW_STRINGS);
                     Matcher matcher = PATTERN_REMOVE_PREFIX.matcher(change);
-                    change = matcher.replaceFirst("");
+                    change = matcher.replaceFirst(EMPTY_STRING);
                     matcher = PATTERN_REMOVE_SUFFIX.matcher(change);
-                    change = matcher.replaceFirst("");
+                    change = matcher.replaceFirst(EMPTY_STRING);
                 }
                 return change;
             }
@@ -81,10 +84,13 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
 
         return null;
     }
+    private static final Pattern PATTERN_CHANGELOG_EXCLUDED = Pattern.compile("CHANGELOG\\s*?EXCLUDED?", Pattern.CASE_INSENSITIVE);
 
     private static final Pattern PATTERN_REMOVE_SUFFIX = Pattern.compile("[\\.\\s\\u3002\\uFF0C\\uFF1B\\u3000\\uFF5E\\uFF01;/\\\\!~]*?$");
     private static final Pattern PATTERN_REMOVE_PREFIX = Pattern.compile("^[\\.\\s\\u3002\\uFF0C\\uFF1B\\u3000\\uFF5E\\uFF01;/\\\\!~]*?");
 
     private static final String[] REMOVE_OLD_STRINGS = new String[] {"\n", "\r", "\t"};
     private static final String[] REMOVE_NEW_STRINGS = new String[] {"", "", ""};
+    private static final String EMPTY_STRING = "";
+    private static final String LINE_BREAK = "\n";
 }
