@@ -64,7 +64,7 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
     private static String getChange(SVcsModification vcsModification) {
         if (vcsModification != null) {
             String description = vcsModification.getDescription();
-            if (PATTERN_CHANGELOG_EXCLUDED.matcher(description).find()) {
+            if (description.startsWith(".") || PATTERN_CHANGELOG_EXCLUDED.matcher(description).find()) {
                 return null;
             }
             if (!StringUtil.isEmptyOrSpaces(description)) {
