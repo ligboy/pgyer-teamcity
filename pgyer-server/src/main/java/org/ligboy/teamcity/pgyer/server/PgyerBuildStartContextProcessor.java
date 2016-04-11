@@ -46,14 +46,16 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
         List<SVcsModification> modifications = build.getContainingChanges();
         StringBuilder sb = new StringBuilder();
         SVcsModification sVcsModification;
-        for (int i = 0; i < modifications.size(); i++) {
+
+        for (int i = 0, j = 1; i < modifications.size(); i++) {
             sVcsModification = modifications.get(i);
             String change = getChange(sVcsModification);
             if (!StringUtil.isEmptyOrSpaces(change)) {
                 if (i > 0) {
                     sb.append('\n');
                 }
-                sb.append(i + 1).append(". ").append(change).append(';');
+                sb.append(j).append(". ").append(change).append(';');
+                j++;
             }
         }
         context.addSharedParameter(PARAMETER_CHANGELOG, sb.toString());
