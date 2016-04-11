@@ -7,7 +7,7 @@
     </formats>
     <files>
         <file>
-            <source>../pyger-agent/teamcity-plugin.xml</source>
+            <source>../pgyer-agent/teamcity-plugin.xml</source>
             <outputDirectory>/</outputDirectory>
         </file>
     </files>
@@ -15,8 +15,8 @@
         <moduleSet>
             <useAllReactorProjects>true</useAllReactorProjects>
             <includes>
-                <include>org.ligboy.teamcity:pyger-agent</include>
-                <include>org.ligboy.teamcity:pyger-common</include>
+                <include>org.ligboy.teamcity:pgyer-agent</include>
+                <include>org.ligboy.teamcity:pgyer-common</include>
             </includes>
             <binaries>
                 <outputDirectory>lib</outputDirectory>

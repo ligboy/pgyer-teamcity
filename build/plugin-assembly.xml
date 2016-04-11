@@ -11,7 +11,7 @@
          <outputDirectory>/</outputDirectory>
      </file> 
      <file>
-         <source>target/pyger-agent.zip</source>
+         <source>target/pgyer-agent.zip</source>
          <outputDirectory>agent</outputDirectory>
      </file> 
   </files>
@@ -19,8 +19,8 @@
     <moduleSet>
        <useAllReactorProjects>true</useAllReactorProjects>
        <includes>
-           <include>org.ligboy.teamcity:pyger-server</include>
-           <include>org.ligboy.teamcity:pyger-common</include>
+           <include>org.ligboy.teamcity:pgyer-server</include>
+           <include>org.ligboy.teamcity:pgyer-common</include>
        </includes> 
        <binaries>
            <outputDirectory>server</outputDirectory>

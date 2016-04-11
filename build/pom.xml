@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>pyger</artifactId>
+    <artifactId>pgyer</artifactId>
     <groupId>org.ligboy.teamcity</groupId>
     <version>1.1.0</version>
   </parent>
@@ -10,24 +10,24 @@
   <packaging>pom</packaging>
   <properties>
       <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
-      <teamcity.pyger.plugin.version>snapshot-${maven.build.timestamp}</teamcity.pyger.plugin.version>
-      <teamcity.pyger.plugin.vendorName>Plugin vendor name</teamcity.pyger.plugin.vendorName>
-      <teamcity.pyger.plugin.vendorUrl>Plugin vendor URL</teamcity.pyger.plugin.vendorUrl>
+      <teamcity.pgyer.plugin.version>snapshot-${maven.build.timestamp}</teamcity.pgyer.plugin.version>
+      <teamcity.pgyer.plugin.vendorName>Plugin vendor name</teamcity.pgyer.plugin.vendorName>
+      <teamcity.pgyer.plugin.vendorUrl>Plugin vendor URL</teamcity.pgyer.plugin.vendorUrl>
   </properties>
   <dependencies>
       <dependency>
            <groupId>org.ligboy.teamcity</groupId>
-           <artifactId>pyger-agent</artifactId>
+           <artifactId>pgyer-agent</artifactId>
            <version>1.0-SNAPSHOT</version>
       </dependency>
       <dependency>
            <groupId>org.ligboy.teamcity</groupId>
-           <artifactId>pyger-common</artifactId>
+           <artifactId>pgyer-common</artifactId>
            <version>1.0-SNAPSHOT</version>
       </dependency>
       <dependency>
            <groupId>org.ligboy.teamcity</groupId>
-           <artifactId>pyger-server</artifactId>
+           <artifactId>pgyer-server</artifactId>
            <version>1.0-SNAPSHOT</version>
       </dependency>
   </dependencies>
@@ -51,15 +51,15 @@
                 <replacements>
                     <replacement>
                         <token>@Version@</token>
-                        <value>${teamcity.pyger.plugin.version}</value>
+                        <value>${teamcity.pgyer.plugin.version}</value>
                     </replacement>
                     <replacement>
                         <token>@VendorName@</token>
-                        <value>${teamcity.pyger.plugin.vendorName}</value>
+                        <value>${teamcity.pgyer.plugin.vendorName}</value>
                     </replacement>
                     <replacement>
                         <token>@VendorURL@</token>
-                        <value>${teamcity.pyger.plugin.vendorUrl}</value>
+                        <value>${teamcity.pgyer.plugin.vendorUrl}</value>
                     </replacement>
                 </replacements>                        
             </configuration>
@@ -75,7 +75,7 @@
                   <goal>single</goal>
                 </goals>
                 <configuration>
-                  <finalName>pyger-agent</finalName>
+                  <finalName>pgyer-agent</finalName>
                   <appendAssemblyId>false</appendAssemblyId>
                   <descriptors>
                     <descriptor>plugin-agent-assembly.xml</descriptor>
@@ -89,7 +89,7 @@
                   <goal>single</goal>
                 </goals>
                 <configuration>
-                  <finalName>pyger</finalName>
+                  <finalName>pgyer</finalName>
                   <outputDirectory>${project.parent.build.directory}</outputDirectory>
                   <appendAssemblyId>false</appendAssemblyId>
                   <descriptors>

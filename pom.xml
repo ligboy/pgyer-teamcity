@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.ligboy.teamcity</groupId>
-  <artifactId>pyger</artifactId>
+  <artifactId>pgyer</artifactId>
   <version>1.1.0</version>
   <packaging>pom</packaging>
   <properties>
@@ -43,9 +43,9 @@
       </pluginManagement>
   </build>
   <modules>
-    <module>pyger-server</module>
-    <module>pyger-agent</module>
-    <module>pyger-common</module>
+    <module>pgyer-server</module>
+    <module>pgyer-agent</module>
+    <module>pgyer-common</module>
     <module>build</module>
   </modules>
 </project>
