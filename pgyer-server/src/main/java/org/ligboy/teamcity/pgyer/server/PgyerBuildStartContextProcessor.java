@@ -66,7 +66,9 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
     private static String getChange(SVcsModification vcsModification) {
         if (vcsModification != null) {
             String description = vcsModification.getDescription();
-            if (description.startsWith(".") || PATTERN_CHANGELOG_EXCLUDED.matcher(description).find()) {
+            description = description.trim();
+            if (description.startsWith(".") || StringUtil.startsWithIgnoreCase(description, MERGE_BRANCH)
+                    || StringUtil.startsWithIgnoreCase(description, MERGE_REMOTE_TRACKING) || PATTERN_CHANGELOG_EXCLUDED.matcher(description).find()) {
                 return null;
             }
             if (!StringUtil.isEmptyOrSpaces(description)) {
@@ -95,4 +97,6 @@ public class PgyerBuildStartContextProcessor extends AbstractBuildParametersProv
     private static final String[] REMOVE_NEW_STRINGS = new String[] {"", "", ""};
     private static final String EMPTY_STRING = "";
     private static final String LINE_BREAK = "\n";
+    private static final String MERGE_BRANCH = "Merge branch";
+    private static final String MERGE_REMOTE_TRACKING = "Merge remote-tracking branch";
 }
