@@ -2,7 +2,7 @@ Pgyer TeamCity plugin
 ==============
  Teamcity Compat: 9.0+
 
- This is project is Pgyer TeamCity plugin, that uploading package to Pgyer server.
+ This project is Pgyer TeamCity plugin, that uploading package to Pgyer server.
 
  1. Build
  Issue 'mvn package' command from the root project to build the plugin. Resulting package <artifactId>.zip will be placed in 'target' directory. 
