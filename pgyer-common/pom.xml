@@ -4,7 +4,7 @@
   <parent>
     <artifactId>pgyer</artifactId>
     <groupId>org.ligboy.teamcity</groupId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
   </parent>
   <artifactId>pgyer-common</artifactId>
   <packaging>jar</packaging>
